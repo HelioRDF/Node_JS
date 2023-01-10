@@ -1,0 +1,44 @@
+//Novo puro ajustar o projeto
+npm i dotenv-safe axios
+npm install 
+C:\Develop\Trade_Binance>node teste.js
+C:\Develop\Trade_Binance>npm start
+
+//Referências
+www.horadecodar.com.br/2020/07/14/como-criar-arquivos-com-node-js-escrever-arquivos/
+
+//Capturar Variável de ambiente
+process.env.Java_Home
+
+
+
+//excluir dependencias
+npm uninstall -g 
+
+
+
+--------------------------------------------------------------------------------------------------
+
+//Novo com express
+//O express-generator é um módulo que permite rapidamente 
+//criar a estrutura básica de um projeto Express via linha de comando,
+//O "-e" é para usar a view-engine (motor de renderização) EJS,
+// ao invés do tradicional Jade/Pug (falaremos dele mais pra frente). Já o "--git" deixa seu projeto preparado para versionamento com Git. Aperte Enter e o projeto será criado (talvez ele peça uma confirmação, apenas digite 'y' e confirme).
+- C:\Develop\projetoNode2>  npm install -g express-generator
+- C:\Develop\projetoNode2> express -e --git projetoNode2
+- cd projetoNode2
+- npm install
+- npm start
+
+
+//Problema de permissão
+Set-ExecutionPolicy Unrestricted
+https://paulosantanna.com/2012/10/14/habilitando-a-execucao-de-scripts-powershell/
+
+//Iniciar app
+//Isso vai fazer com que a aplicação default inicie sua execução em localhost:3000,
+npm start
+
+
+
+

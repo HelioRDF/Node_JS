@@ -1,0 +1,37 @@
+//Ref
+https://www.luiztools.com.br/post/criando-uma-webapi-com-nodejs-e-mysql/
+
+//Falha na conexão
+//Necessário habilitar a compatibilidade de autenticação com mysql 5.x
+/* alternativa não testada
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '********',
+  database : 'vod_bill_database',
+  insecureAuth : true
+}); 
+*/
+https://stackoverflow.com/questions/44946270/er-not-supported-auth-mode-mysql-server
+
+//iniciar o projeto
+- npm init
+
+// mysql
+nodemysql> npm install mysql
+
+// Executar arquivo ou F5 no arquivo
+nodemysql> node create-table.js
+
+// Para criar a api
+nodesqlserver> npm install express body-parser
+
+//Iniciar API
+node index.js
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+const api = require('../apiBinance');
+const queryString = require('querystring');
+const fs = require('fs');
+
+async function infoExchange() {
+    console.log(await api.exchangeInfo());
+}
+
+async function market(symbol) {
+    const mercado = await api.depth(symbol);
+    const compra = mercado.bids.length ? `\tCompra: ${mercado.bids[0][0]}` : '\tCompra: N/A';
+    const venda = mercado.asks.length ? `\tVenda: ${mercado.asks[0][0]}` : 'Sem Vendas';
+    console.log(`Moedas: ${symbol}` + "\t |" + compra + "\t|" + venda);
+    separadorInfo();
+    return mercado;
+}
+
+async function wallet(symbol) {
+    console.log('Carteira');
+    const carteira = await api.accountInfo();
+    const coins = carteira.balances.filter(b => symbol.indexOf(b.asset) !== -1);
+    console.log(coins);
+    const carteiraUSD = parseFloat(coins.find(c => c.asset.endsWith('USD')).free);
+    return carteiraUSD;
+}
+
+async function buy(moedas, quantidade, valor, log = false) {
+    console.log('Tenho! Comprando!');
+    const buyOrder = await api.newOrder(moedas, quantidade, valor, "BUY", "LIMIT");
+    log ? console.log(buyOrder) : "n/a";
+    console.log(`- orderId: ${buyOrder.orderId}` + `\t|\tstatus: ${buyOrder.status}`);
+    fs.writeFileSync(`./ticket/compra/compra_${buyOrder.orderId}.json`,JSON.stringify(buyOrder));
+}
+
+async function sell(moedas, quantidade, lucro, log = false) {
+    separadorInfo();
+    console.log(`Vendendo por: ` + lucro);
+    const sellOrder = await api.newOrder(moedas, quantidade, lucro, 'SELL', 'MARKET');
+    log ? console.log(sellOrder) : "n/a";
+    console.log(`- orderId: ${sellOrder.orderId}` + `\t|\tstatus: ${sellOrder.status}`);
+    fs.writeFileSync(`./ticket/venda/venda_${sellOrder.orderId}.json`,JSON.stringify(sellOrder));
+  //  C:\Develop\Trade_Binance\controle\binanceControle
+}
+
+async function sellMarket(symbol, quantidade,log = false) {
+    separadorInfo();
+    const sellOrder = await api.newOrderMarket(symbol, quantidade);
+    log ? console.log(sellOrder) : "n/a";
+    console.log(`- orderId: ${sellOrder.orderId}` + `\t|\tstatus: ${sellOrder.status}`);
+    fs.writeFileSync(`./ticket/venda/venda_${sellOrder.orderId}.json`,JSON.stringify(sellOrder));
+  //  C:\Develop\Trade_Binance\controle\binanceControle
+}
+
+function separadorInfo() {
+    console.log('\n--------------------------------------------------');
+}
+
+module.exports = { infoExchange, market, wallet, buy, sell ,sellMarket}

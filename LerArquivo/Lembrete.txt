@@ -1,0 +1,10 @@
+#Iniciar o projeto
+npm init
+
+# Instalar dependências
+npm install -S express fs
+
+#Iniciar arquivo.
+node index
+
+

@@ -1,0 +1,15 @@
+//https://udgwebdev.github.io/node-js-para-leigos-utilizando-api-file-system/
+
+// Carregando o File System
+ /*var fs = require("fs");
+ // Lê o conteúdo do diretório retornando um array de string de arquivos.
+ // Obs.: Essa leitura é Não-Bloqueante, por isso retorna via callback.
+ fs.readdir("C:/", function(err, files){
+   console.log(files);
+ });
+ // A mesma função, executada de forma Bloqueante.
+ var files = fs.readdirSync("C:/");
+ console.log(files);
+
+ ctrl+shift+b para build ou watch
+ */

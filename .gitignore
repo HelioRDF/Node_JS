@@ -1,0 +1,12 @@
+target/
+.scannerwork/
+.vscode/
+/target/
+/.scannerwork/
+/.vscode/
+/.scannerwork/
+/.idea/
+/.metadata/
+/.settings/
+/*.class
+*node_modules/

@@ -1,0 +1,22 @@
+#Verificar versão
+Node -v
+
+#REPL
+#Utilizado para programar via terminal
+node
+
+#ExpressJS, framework para node
+C:\node> npm install -g express-generator
+
+#Criar projeto express, O "-e" é para usar a view-engine (motor de renderização) EJS,
+#ao invés do tradicional Jade/Pug (falaremos dele mais pra frente).
+#Já o "--git" deixa seu projeto preparado para versionamento com Git.
+C:\node>express -e --git workshop
+
+#Instalar as dependências
+cd workshop
+npm install
+
+#Inicia a aplicação default em localhost:3000
+npm start
+

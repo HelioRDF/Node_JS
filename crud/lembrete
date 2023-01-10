@@ -1,0 +1,85 @@
+#Iniciar o projeto
+express -e --git crud
+
+#Acessar a pasta
+cd crud
+
+#Instalar dependências
+npm install
+
+---------------------------------------------------------------------------
+- MongoDB
+
+#npm install mongodb
+
+Duarte, Luiz. Node.js e Microservices: Um Guia Prático (p. 146). LuizTools. Edição do Kindle. 
+
+#Iniciar o servidor mongo, definindo o caminho para persistência
+> CD C:\Program Files\MongoDB\Server\5.0\bin
+> mongod --dbpath C:\mongo\data
+
+#conectar no db
+> CD C:\Program Files\MongoDB\Server\5.0\bin
+> mongo
+
+#Verificar bancos na baseF
+> show databases
+
+# Acessar DB
+> use workshop
+
+#Consultar coleções
+> show collections
+
+#Insert, onde customers é o nome do documento
+> db.customers.insert({ nome: "Luiz", idade: 29 })
+> custArray = [{ nome : "Fernando", idade : 29 }, { nome : "Teste", "uf" : "RS" }]
+> db.customers.insert(custArray)
+
+#update
+#não recomendado usar apenas o update
+> db.customers.update({nome: "Luiz"}, {nome: "Luiz", idade: 29, uf: "RS"})
+> db.customers.updateOne({_id: ObjectId("59ab46e433959e2724be2cbd")}, {$set: {idade: 28}})
+ ●      $unset: remove o respectivo campo do documento;
+ ●      $inc: incrementa o valor original do campo com o valor especificado;
+ ●      $mul: multiplica o valor original do campo com o valor especificado;
+ ●      $rename: muda o nome do campo para o nome especificado;
+
+> db.customers.updateOne({nome: "LuizTools"}, {nome: "LuizTools", uf: "RS"}, {upsert: true})
+#Um upsert é um update como qualquer outro, ou seja, vai atualizar o documento que atender ao filtro passado como primeiro parâmetro, 
+#porém, se não existir nenhum documento com o respectivo filtro, ele será inserido, como se fosse um insert. upsert = update + insert
+#Duarte, Luiz. Node.js e Microservices: Um Guia Prático (p. 144). LuizTools. Edição do Kindle. 
+
+#Delete
+> db.customers.delete({nome: "Luiz"})
+> db.customers.deleteOne({nome: "Luiz"})
+
+#Consultar dados do documentos
+> db.customers.find()
+> db.customers.find().pretty()
+> db.customers.find({uf: "RS"})
+> db.customers.find({nome: { $regex: /a/ }})
+> db.customers.find({idade: {$gte: 18}})
+> db.customers.find({nome: "Luiz", idade: {$gte: 18}})
+> db.customers.find({nome: { $regex: /a/ }, idade: {$gte: 18}})
+$e: exatamente igual (=) 
+$ne: diferente (<> ou !=) 
+$gt: maior do que (>) 
+$lt: menor do que (<)
+$lte: menor ou igual a (<=)
+$in: o valor está contido em um array de possibilidades, como em um OU. Ex: {idade: {$in: [10,12] }} 
+$all: MongoDB
+$all: MongoDB permite campos com arrays. 
+Ex: { tags: ["NodeJS", "MongoDB"] }. 
+Com esse operador, você compara se seu campo multivalorado possui todos os valores de um array específico. 
+Ex: {tags: {$all: ["NodeJS", "Android"]}}
+
+#Você também pode usar findOne ao invés de find para retornar apenas o primeiro documento,
+#ou ainda as funções limit e skip para limitar o número de documentos retornados e para ignorar alguns documentos,
+#especificamente, da seguinte maneira:
+> db.customers.find().skip(1).limit(10)
+
+#crescente (1) ou decrescente (-1),
+> db.customers.find().sort({idade: 1})
+
+---------------------------------------------------------------------------
