@@ -12,25 +12,36 @@
         <%= title %>
     </h1>
     <p>Preencha os dados abaixo para salvar o cliente.</p>
-    <form action=" <%= action %>" method="POST">
+    <form action="<%= action %>" method="POST">
         <p>
-            <label>Nome: <input type="text" name="nome" /></label>
+            <label>Nome: <input type="text" name="nome" value="<%= doc.nome %>" /></label>
         </p>
         <p>
-            <label>Idade: <input type="number" name="idade" /></label>
+            <label>Idade: <input type="number" name="idade" value="<%= doc.idade %>" /></label>
         </p>
         <p>
             <label>UF: <select name="uf">
-                    <option>RS</option>
-                    <option>SC</option>
-                    <option>PR</option>
-                    <!-- coloque os estados que quiser -->
+                    <% const s="selected" %>
+                        <option <% if(doc.uf==="RS" ) { %>
+                            <%= s %>
+                                <% } %>>RS
+                        </option>
+                        <option <% if(doc.uf==="SC" ) { %>
+                            <%= s %>
+                                <% } %>>SC
+                        </option>
+                        <option <% if(doc.uf==="PR" ) { %>
+                            <%= s %>
+                                <% } %>>PR
+                        </option>
+                        <!-- coloque os estados que quiser -->
                 </select></label>
         </p>
         <p>
             <a href="/">Cancelar</a> | <input type="submit" value="Salvar" />
         </p>
     </form>
+
 </body>
 
 </html>

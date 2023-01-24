@@ -26,4 +26,16 @@
 #Executar o servidor web (http://localhost:3000/)
 > npm start
 
+#Instalar MongoDB
+> npm install mongodb
+
+#Abra o arquivo www que fica na pasta bin do seu projeto Node.js e adicione a seguinte linha no início dele:
+> global.db = require('../db')
+
+#  Usar variável de Ambiente 
+- npm i dotenv-safe axios
+
+# Capturar Variável de ambiente
+process.env.Java_Home
+
 ```

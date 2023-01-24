@@ -21,8 +21,29 @@
     </thead>
     <tbody>
       <tr>
+        <% if(!docs || docs.length==0) { %>
+      <tr>
         <td colspan="4">Nenhum cliente cadastrado.</td>
       </tr>
+      <% } else { docs.forEach(function(customer){ %>
+        <tr>
+          <td style="width:50%">
+            <%= customer.nome %>
+          </td>
+          <td style="width:15%">
+            <%= customer.idade %>
+          </td>
+          <td style="width:15%">
+            <%= customer.uf %>
+          </td>
+          <td>
+               <a href="/edit/<%= customer._id %>">Editar</a>
+               <a href="/delete/<%= customer._id %>" onclick="return confirm('Tem certeza?');">Excluir</a>
+          </td>
+        </tr>
+        <% }) }%>
+
+          </tr>
     </tbody>
     <tfoot>
       <tr>
@@ -33,5 +54,16 @@
     </tfoot>
   </table>
 </body>
+
+<script> if (location.href.indexOf('delete=true') != -1) {
+    alert('Cliente excluído com sucesso!');
+  }
+  else if (location.href.indexOf('edit=true') != -1) {
+    alert('Cliente editado com sucesso!');
+  }
+  else if (location.href.indexOf('new=true') != -1) {
+    alert('Cliente cadastro com sucesso!');
+  } </script>
+
 
 </html>
