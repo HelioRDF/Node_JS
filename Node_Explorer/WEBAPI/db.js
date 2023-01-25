@@ -17,10 +17,11 @@ async function findCustomer(id) {
 }
 
 async function insertCustomer(customer) {
-    console.log(customer)
     const db = await connect();
     return db.collection("customers").insertOne(customer);
 }
+
+
 
 module.exports = { findCustomers, findCustomer, insertCustomer }
 

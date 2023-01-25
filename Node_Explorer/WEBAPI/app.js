@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const port = 3000; //porta padrão
 app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
 
 //definindo as rotas
 const router = express.Router();
@@ -23,23 +24,11 @@ router.get('/clientes/:id?', async function (req, res) {
 // POST
 router.post('/clientes', async function (req, res, next) {
     try {
-        const nome = req.body.nome
-        const idade = parseInt(req.body.idade);
-        const uf = req.body.uf
-        console.log(nome)
-        await db.insertCustomer({ nome, idade, uf });
-        res.json({ message: "cliente cadastrado com sucesso" });
+        const customer = req.body
+        await db.insertCustomer(customer);
+        res.json({ message: "cliente cadastrado com sucesso: ", customer });
     } catch (ex) { console.log(ex); res.status(500).json({ erro: `${ex}` }); }
 })
-
-/* POST new page. */
-router.post('/new', function (req, res, next) {
-    const nome = req.body.nome
-    const idade = parseInt(req.body.idade);
-    const uf = req.body.uf
-
-    console.log(nome)
-  })
 
 //inicia o servidor
 app.listen(port);
