@@ -16,6 +16,8 @@ async function findCustomer(id) {
     return db.collection("customers").findOne(objId);
 }
 
+
+//curl -X POST -d "{'nome':'Curl', 'idade': 11, 'uf': 'RJ'}" http://localhost:3000/clientes
 async function insertCustomer(customer) {
     const db = await connect();
     return db.collection("customers").insertOne(customer);
