@@ -1,0 +1,14 @@
+{
+  "name": "tdd-jest",
+  "version": "1.0.0",
+  "description": "```bash\r > npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Helio Franca",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.1"
+  }
+}

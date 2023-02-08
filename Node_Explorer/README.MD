@@ -38,4 +38,7 @@
 # Capturar Variável de ambiente
 process.env.Java_Home
 
+#MongoDB
+> mongod --dbpath E:/GIT/Node_JS/Node_Explorer/cinema-microservices/movies-service/data
+
 ```
