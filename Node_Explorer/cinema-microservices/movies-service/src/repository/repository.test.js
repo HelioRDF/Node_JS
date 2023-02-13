@@ -11,7 +11,7 @@ beforeAll(async () => {
 
 test('Repository GetAllMovies', async () => {
     const movies = await repository.getAllMovies();
-    console.log(movies)
+    //console.log(movies)
     expect(Array.isArray(movies)).toBeTruthy();
     expect(movies.length).toBeGreaterThan(0);
 })
