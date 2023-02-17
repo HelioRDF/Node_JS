@@ -22,7 +22,7 @@
 > use movie-service
 
 # Subir o mongodb, executar na raiz da instalação do mongo (C:\Program Files\MongoDB\Server\6.0\bin) ou configurar na variável de ambiente!
-mongod --dbpath E:/GIT/Node_JS/Node_Explorer/cinema-microservices/cinema-catalog-service/data --port 27018
+mongod --dbpath E:/GIT/Node_JS/Node_Explorer/cinema-microservices/movies-service/data --port 27017
 
 # Insert
 > db.movies.insert([{ titulo: "Os Vingadores: Ultimato", sinopse: "Os heróis mais poderosos da Terra enfrentando o Thanos. De novo.", duracao: 181, dataLancamento: ISODate("2019-04-25T00:00:00Z"), imagem: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg", categorias: ["Aventura", "Ação"] },{ titulo: "Os Vingadores: Guerra Infinita", sinopse: "Os heróis mais poderosos da Terra enfrentando o Thanos",
