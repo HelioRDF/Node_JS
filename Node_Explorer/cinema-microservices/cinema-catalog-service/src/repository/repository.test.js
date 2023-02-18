@@ -59,7 +59,7 @@ test('Repository getMovieSessionsByCityId', async () => {
 
 test('Repository getMovieSessionsByCinemaId', async () => {
     const result = await repository.getMovieSessionsByCinemaId(testMovieId, testCinemaId);
-    console.log(result)
+    // console.log(result)
     expect(Array.isArray(result)).toBeTruthy();
     expect(result.length).toBeGreaterThan(0);
 })
